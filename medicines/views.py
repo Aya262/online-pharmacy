@@ -31,4 +31,4 @@ def home(request):
         'products_drink_2':products_drink_2,
         'products_drink_3':products_drink_3
     }
-    return render(request,'medicines/home.html',context)
+    return render(request,'medicines/homee.html',context)
