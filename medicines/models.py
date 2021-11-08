@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Products(models.Model):
@@ -19,16 +20,20 @@ class Products(models.Model):
     def __str__(self):
         return  self.pName
 
-class User(models.Model):
+class Customer(models.Model):
+    Cuser=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     gender=(
         ('Female','Female'),
         ('Male','Male')
     )
-    uName=models.CharField(max_length=50)
-    uAddress=models.CharField(max_length=200)
-    uMobile=models.IntegerField()
-    uImage=models.ImageField(upload_to='uploads/%y/%m/%d')
-    uGender=models.CharField(max_length=20,choices=gender)
+    CFullName=models.CharField(max_length=50)
+    CAddress=models.CharField(max_length=200)
+    CMobile=models.IntegerField()
+    CImage=models.ImageField(upload_to='uploads/%y/%m/%d')
+    CGender=models.CharField(max_length=20,choices=gender)
+    CEmail=models.CharField(max_length=30,null=True)
+    CUserName=models.CharField(max_length=50,null=True)
+    CPassword=models.CharField(max_length=30,null=True)
     def __str__(self):
         return self.uName
 
@@ -39,7 +44,7 @@ class OrderDetails(models.Model):
         ('Out for Delivered','Out for Delivered')
     )
     oProductID=models.ForeignKey(Products,on_delete=models.CASCADE)
-    oCustomerID=models.ForeignKey(User,on_delete=models.CASCADE)
+    oCustomerID=models.ForeignKey(Customer,on_delete=models.CASCADE)
     oDate=models.DateTimeField(auto_now_add=True)
     oQuantity=models.IntegerField()
     oTatalPrice=models.FloatField()

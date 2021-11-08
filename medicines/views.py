@@ -31,4 +31,10 @@ def home(request):
         'products_drink_2':products_drink_2,
         'products_drink_3':products_drink_3
     }
-    return render(request,'medicines/homee.html',context)
+    return render(request,'medicines/home.html',context)
+
+def register(request):
+    return render(request,'register.html')
+
+def login(request):
+    return render(request,'login.html')
