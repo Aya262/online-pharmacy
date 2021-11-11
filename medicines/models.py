@@ -35,7 +35,7 @@ class Customer(models.Model):
     CUserName=models.CharField(max_length=50,null=True)
     CPassword=models.CharField(max_length=30,null=True)
     def __str__(self):
-        return self.uName
+        return self.CFullName
 
 class OrderDetails(models.Model):
     categories=(

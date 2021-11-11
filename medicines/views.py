@@ -38,3 +38,9 @@ def register(request):
 
 def login(request):
     return render(request,'login.html')
+
+def index(request):
+    return render(request,'index.html')
+
+def about(request):
+    return render(request,'about.html')

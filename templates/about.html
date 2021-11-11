@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static%}
+{% block content %}
+    <div class ="container-fluid" >
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="{% static 'images/index.jpg'%}" alt="pharmacy image" >
+            </div>
+            <div class="col-sm-6">
+                <h2 class ="text-primary"> Online pharmacy products </h2>
+                <p > Online pharmacy products enable customer to shopping at home for
+                medicines and pharmacy products they need
+                the customer can have an account and gets sales and discounts on their purchases
+                the customer can order the products and it will deliver at home from the nearset pharmacy</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
