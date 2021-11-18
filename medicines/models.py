@@ -26,7 +26,7 @@ class Customer(models.Model):
         ('Female','Female'),
         ('Male','Male')
     )
-    CFullName=models.CharField(max_length=50)
+    CFullName=models.CharField(max_length=100)
     CAddress=models.CharField(max_length=200)
     CMobile=models.IntegerField()
     CImage=models.ImageField(upload_to='uploads/%y/%m/%d')

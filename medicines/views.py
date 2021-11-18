@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import *
+from .forms import ContactForm
+from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
     products_drink=Products.objects.filter(pCategories='drink')
@@ -15,7 +17,11 @@ def home(request):
     return render(request,'medicines/home.html',context)
 
 def register(request):
-    return render(request,'register.html')
+    if request.method=="POST":
+        print(request.POST)
+
+    context={}
+    return render(request,'register.html',context)
 
 def login(request):
     return render(request,'login.html')
@@ -25,3 +31,20 @@ def index(request):
 
 def about(request):
     return render(request,'about.html')
+
+
+def contact(request):
+    submitted=False
+    if request.method=="POST":
+        form=ContactForm(request.POST)
+        if form.is_valid():
+            cd=form.cleaned_data
+            #assert False
+            return HttpResponseRedirect('/contact?submitted=True')
+    else :
+        form=ContactForm()
+        if 'submitted' in request.GET:
+            submitted=True
+
+    context={'form':form,'submitted':submitted}
+    return render(request,'contact.html',context)
