@@ -1,0 +1,79 @@
+{% extends 'main.html'%}
+{% block content %}
+    <div class="container">
+        <p>{{products.5.pName}}</p>
+        <p>{{products.6.pName}}</p>
+        <p>{{products.20.pName}}</p>
+        <p>{{products.50.pName}}</p>
+              <div class="row clearfix">
+                  <div class="col-lg-3 col-md-4 col-sm-12">
+                      <div class="card product_item">
+                          <div class="body">
+                              <div class="cp_img">
+                                  <img src="{{products_drink_0.pImage.url}}" alt="Product" class="img-fluid">
+                              </div>
+                              <div class="product_details">
+                                  <button type="button" class="btn btn-success"> Buy Items </button>
+                                  <h5><a href="ec-product-detail.html">{{products_drink_0}}</a></h5>
+                                  <ul class="product_price list-unstyled">
+                                      <li class="old_price">$16.00</li>
+                                      <li class="new_price">$13.00</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-12">
+                      <div class="card product_item">
+                          <div class="body">
+                              <div class="cp_img">
+                                  <img src="{{products_drink_1.pImage.url}}" alt="Product" class="img-fluid">
+                              </div>
+                              <div class="product_details">
+                                  <button type="button" class="btn btn-success"> Buy Items </button>
+                                  <h5><a href="ec-product-detail.html">{{products_drink_1}}</a></h5>
+                                  <ul class="product_price list-unstyled">
+                                      <li class="old_price">$12.00</li>
+                                      <li class="new_price">$11.00</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-12">
+                      <div class="card product_item">
+                          <div class="body">
+                              <div class="cp_img">
+                                  <img src="{{products_drink_2.pImage.url}}" alt="Product" class="img-fluid">
+                              </div>
+                              <div class="product_details">
+                                  <button type="button" class="btn btn-success"> Buy Items </button>
+                                  <h5><a href="ec-product-detail.html">{{products_drink_2}}</a></h5>
+                                  <ul class="product_price list-unstyled">
+                                      <li class="old_price">$23.00</li>
+                                      <li class="new_price">$17.00</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-12">
+                      <div class="card product_item">
+                          <div class="body">
+                              <div class="cp_img">
+                                  <img src="{{products_drink_3.pImage.url}}" alt="Product" class="img-fluid">
+                              </div>
+                              <div class="product_details">
+                                  <button type="button" class="btn btn-success"> Buy Items </button>
+                                  <h5><a href="ec-product-detail.html">{{products_drink_3}}</a></h5>
+                                  <ul class="product_price list-unstyled">
+                                      <li class="old_price">$16.00</li>
+                                      <li class="new_price">$10.00</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+{% endblock %}
