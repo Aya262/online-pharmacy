@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
-from .forms import ContactForm
+from .forms import ContactForm , CustomerForm ,LoginForm
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 # Create your views here.
 def home(request):
     products_drink=Products.objects.filter(pCategories='drink')
@@ -18,13 +19,47 @@ def home(request):
 
 def register(request):
     if request.method=="POST":
-        print(request.POST)
-
-    context={}
-    return render(request,'register.html',context)
+        print(request.FILES)
+        form=CustomerForm(request.POST,request.FILES)
+        for field in form:
+            print("field Error {} : {}".format(field.name,field.errors))
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CustomerForm()
+    context={'form':form}
+    return render(request,'register3.html',context)
 
 def login(request):
-    return render(request,'login.html')
+    '''
+    if request.method=="POST":
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data.get('CFullName')
+            password=form.cleaned_data.get('CPassword')
+            try:
+                customer=Customer.objects.get(CFullName=username,CPassword=password)
+                print("yes")
+                return redirect('index')
+            except:
+                messages.error(request,'The username or the password is incorrect')
+    else :
+        form=LoginForm()
+    context={'form':form}
+    return render(request,'login2.html',context)
+    '''
+    if request.method=="POST":
+        username=request.POST.get("username","")
+        password=request.POST.get("password","")
+        try:
+            customer=Customer.objects.filter(CFullName=username,CPassword=password)
+            print(customer)
+            print("yes")
+            return redirect('index')
+        except:
+            messages.error(request,'The username or the password is incorrect')
+    return render(request,'login2.html')
 
 def index(request):
     return render(request,'index.html')
@@ -48,3 +83,8 @@ def contact(request):
 
     context={'form':form,'submitted':submitted}
     return render(request,'contact.html',context)
+
+def customer(request):
+    form=CustomerForm()
+    context={'form':form}
+    return render(request,'register3.html',context)

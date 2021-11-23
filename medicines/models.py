@@ -32,8 +32,8 @@ class Customer(models.Model):
     CImage=models.ImageField(upload_to='uploads/%y/%m/%d')
     CGender=models.CharField(max_length=20,choices=gender)
     CEmail=models.CharField(max_length=30,null=True)
-    CUserName=models.CharField(max_length=50,null=True)
-    CPassword=models.CharField(max_length=30,null=True)
+    CUserName=models.CharField(max_length=50,unique=True)
+    CPassword=models.CharField(max_length=30,unique=True)
     def __str__(self):
         return self.CFullName
 
